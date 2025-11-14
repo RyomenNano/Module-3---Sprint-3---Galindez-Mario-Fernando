@@ -5,10 +5,10 @@ import {obtenerTodosLosSuperheroesController, crearNuevoSuperheroeController, ac
 
 const routes= express.Router();
 
-routes.get('/heroes', obtenerTodosLosSuperheroesController);
+routes.get('/heroes/:nombreHeroe/', obtenerTodosLosSuperheroesController);
 routes.post('/nuevoheroe', crearNuevoSuperheroeController);
-routes.put('/actulizarheroe/:nombre', actualizarSuperheroeController);
+routes.put('/actulizarheroe/:nombre/:atributo/:valor', actualizarSuperheroeController);
 routes.delete('/eliminarporid/:id', eliminarSuperheroePorIDController);
 routes.delete('/eliminarpornombre/:nombre', eliminarSuperheroePorNombreController);
 
-export default routes;
+export default routes; 

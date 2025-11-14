@@ -6,26 +6,16 @@ class SuperheroRepository extends IRepository{
         return await SuperHero.find({});
     }
 
-    async crearSuperheroe(){
-        const hero= new SuperHero({
-        nombreSuperheroe: 'Flash',
-        nombreReal: 'Barry Allen',
-        edad: 27,
-        planetaOrigen: 'Tierra',
-        debilidad: 'Inestabilidad temporal',
-        poderes: ['Velocidad sobrehumana', 'Curación acelerada', 'Viaje en el tiempo'],
-        aliados: ['Green Lantern', 'Cyborg', 'Superman'],
-        enemigos: ['Reverse Flash', 'Captain Cold', 'Gorilla Grodd'],
-        creador: 'Fernando'
-    });
+    async crearSuperheroe(data){
+        const hero = new SuperHero(data);
         await hero.save();
         return hero;
     }
 
-    async actualizarSuperheroe(nombre, datos){
+    async actualizarSuperheroe(nombre, atributo, valor){
         const result = await SuperHero.updateOne(
             {nombreSuperheroe: nombre},
-            {$set: {edad: 37}});
+            {$set: {[atributo]: valor}});
 
             return await SuperHero.findOne({nombreSuperheroe: nombre});
     }

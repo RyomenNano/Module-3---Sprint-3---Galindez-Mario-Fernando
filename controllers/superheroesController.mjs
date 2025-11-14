@@ -12,13 +12,14 @@ export async function obtenerTodosLosSuperheroesController(req, res){
 
     catch(error){
         res.status(500).send({mensaje: 'Error al obtener los superhéroes', error: error.message})
-    }
+    } 
 } 
 
 export async function crearNuevoSuperheroeController(req, res){
-    const datos = req.body;
+    const data = req.body;
+    console.log('BODY recibido:', req.body);
     try {
-        const superheroe= await crearNuevoSuperheroe();
+        const superheroe= await crearNuevoSuperheroe(data);
         if(superheroe){
             const nuevoHeroe = renderizarSuperheroe(superheroe);
             res.status(200).json(nuevoHeroe);
@@ -29,10 +30,9 @@ export async function crearNuevoSuperheroeController(req, res){
 }
 
 export async function actualizarSuperheroeController(req, res){
-    const datos = req.body;
+    const {nombre, atributo, valor}= req.params;
     try {
-        const {nombre}= req.params;
-        const heroeActualizado =  await actualizarSuperheroe(nombre, datos);
+        const heroeActualizado =  await actualizarSuperheroe(nombre, atributo, valor);
         if (heroeActualizado){
             const nuevoHeroe = renderizarSuperheroe(heroeActualizado);
             res.status(200).json(nuevoHeroe);

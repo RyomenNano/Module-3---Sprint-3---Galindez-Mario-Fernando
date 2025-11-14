@@ -16,7 +16,7 @@ class IRepository{
         throw new Error("Método 'borrarSuperheroe()' no implementado");
     }
 
-
+ 
 
 
 }

@@ -5,12 +5,12 @@ export async function obtenerTodosLosSuperheroes(){
     return await SuperHeroRepository.obtenerSuperheroes();
 }
 
-export async function crearNuevoSuperheroe(){
-    return await SuperHeroRepository.crearSuperheroe();
+export async function crearNuevoSuperheroe(data){
+    return await SuperHeroRepository.crearSuperheroe(data);
 }
 
-export async function actualizarSuperheroe(nombre, datos){
-    return await SuperHeroRepository.actualizarSuperheroe(nombre, datos);
+export async function actualizarSuperheroe(nombre, atributo, valor){
+    return await SuperHeroRepository.actualizarSuperheroe(nombre, atributo, valor);
 }
 
 export async function eliminarSuperheroePorID(id){
@@ -19,4 +19,4 @@ export async function eliminarSuperheroePorID(id){
 
 export async function eliminarSuperheroePorNombre(nombre){
     return await SuperHeroRepository.borrarSuperheroePorNombre(nombre);
-} 
+}  
